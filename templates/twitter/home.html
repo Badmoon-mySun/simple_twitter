@@ -1,0 +1,35 @@
+{% extends "twitter/twitter_base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% load static %}
+
+{% block tweets %}
+    <div class="tweets_container">
+        <h1>Last 10 tweets</h1>
+        {% for tweet in tweets %}
+            <div class="tweet">
+            <div class="card mb-6">
+                <div class="card-header">
+                    <div class="row g-0 tweet_title">
+                        <div class="col-md-1">
+                            <img class="col-md-12" src="{% static 'img/avatar.jpg' %}">
+                        </div>
+                        <h5 class="card-title col-md-2">{{ tweet.author.name }}</h5>
+                        <h5 class="card-title col-md-2 text-muted">{{ tweet.author.username }}</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ tweet.body }}</p>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a href="{{ tweet.get_absolute_url }}" class="btn btn-primary">Go to tweet</a>
+                        </div>
+                        <p class="card-text col-md-4"><small class="text-muted">{{ tweet.date }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

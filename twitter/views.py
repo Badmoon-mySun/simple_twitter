@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from twitter.forms import CustomUserCreationForm, CustomUserAuthForm
@@ -37,6 +38,7 @@ def logout_view(request):
     return redirect('home')
 
 
+@login_required
 def tweet_view(request, slug):
     tweet = Tweet.objects.get(slug=slug)
 
@@ -46,11 +48,16 @@ def tweet_view(request, slug):
         new_tweet.save()
 
     comments = Tweet.objects.filter(replying_tweet=tweet)
+    context = {'tweet': tweet, 'comments': comments, 'username': request.user.get_username()}
 
-    return render(request, 'twitter/tweet.html', {'tweet': tweet, 'comments': comments,
-                                                  'username': request.user.get_username()})
+    return render(request, 'twitter/tweet.html', context)
 
+
+@login_required
+def profile_view(required):
+    pass
 
 
 def home_view(request):
-    pass
+    tweets = Tweet.objects.all()[:10]
+    return render(request, 'twitter/home.html', {'tweets': tweets, 'username': request.user.get_username()})
