@@ -1,0 +1,18 @@
+{% extends "twitter/auth.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block page_type %}Registration{% endblock %}
+
+{% block auth_form %}
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" placeholder="Steve">
+
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password1" placeholder="••••••••••">
+
+    <label for="password" class="form-label">Password again</label>
+    <input type="password" class="form-control" id="password2" placeholder="••••••••••">
+
+    <button type="button" class="btn btn-outline-primary">Login</button>
+{% endblock %}

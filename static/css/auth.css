@@ -1,0 +1,43 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+.login_page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_container {
+    padding: 20px;
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hello-icon {
+    margin: 0 auto;
+    width: 100px;
+    font-family: Arial, serif;
+    font-size: 35px;
+}
+
+.hello-icon svg {
+    width: 100px;
+    height: 100px;
+}
+
+.form_container input {
+    margin: 0 0 10px 0;
+}
+
+.form_container button {
+    display: inherit;
+    margin: auto auto;
+    width: 70px;
+}
