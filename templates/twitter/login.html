@@ -5,9 +5,14 @@
 {% block page_type %}Log In{% endblock %}
 
 {% block auth_form %}
-    <label for="username" class="form-label">Username</label>
-    <input type="text" name="username" class="form-control" id="username" placeholder="Steve">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="password" placeholder="••••••••••">
-    <button type="submit" class="btn btn-outline-primary">Login</button>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form }}
+
+    <div class="submit_btn"><button type="submit" class="btn btn-outline-primary">Login</button></div>
 {% endblock %}

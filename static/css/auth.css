@@ -21,8 +21,11 @@ body {
 }
 
 .hello-icon {
-    margin: 0 auto;
-    width: 100px;
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, serif;
     font-size: 35px;
 }
@@ -32,12 +35,13 @@ body {
     height: 100px;
 }
 
+.submit_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .form_container input {
     margin: 0 0 10px 0;
 }
 
-.form_container button {
-    display: inherit;
-    margin: auto auto;
-    width: 70px;
-}
