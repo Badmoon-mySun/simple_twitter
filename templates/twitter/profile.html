@@ -1,0 +1,48 @@
+{% extends "twitter/twitter_base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% load static %}
+
+{% block tweets %}
+    <div class="profile">
+        <div class="card mb-3" style="max-width: 80%; margin: 0 auto">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img class="tweet_author_img" src="{% static 'img/avatar.jpg' %}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.first_name }} <small
+                                class="text-muted">{{ user.username }}</small></h5>
+                        <p class="card-text">Email: {{ user.email }}</p>
+                        <p class="card-text"><small class="text-muted">Last login: {{ user.last_login }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tweets_container">
+        <h1>Your tweets:</h1>
+        {% for tweet in tweets %}
+            <div class="tweet">
+                <div class="card mb-6">
+                    <div class="card-header">
+                        <div class="row g-0 tweet_title">
+                            <h5 class="card-title col-md-2">{{ user.name }}</h5>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ tweet.body }}</p>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a href="{{ tweet.get_absolute_url }}" class="btn btn-primary">Go to tweet</a>
+                            </div>
+                            <p class="card-text col-md-4"><small class="text-muted">{{ tweet.date }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
