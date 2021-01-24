@@ -54,8 +54,9 @@ def tweet_view(request, slug):
 
 
 @login_required
-def profile_view(required):
-    pass
+def profile_view(request):
+    tweets = Tweet.objects.filter(author=request.user)
+    return render(request, 'twitter/profile.html', {'user': request.user, 'tweets': tweets})
 
 
 def home_view(request):
