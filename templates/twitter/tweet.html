@@ -1,0 +1,75 @@
+{% extends "twitter/twitter_base.html" %}
+
+{% block title %}Tweet{% endblock %}
+
+{% load static %}
+
+{% block tweets %}
+    <div class="tweets_container">
+        <h1>Tweet</h1>
+        {% if tweet.replying_tweet %}
+            <div class="replying">
+                <div class="card mb-6 replying_card">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <img class="col-md-12" src="{% static 'img/avatar.jpg' %}">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ tweet.replying_tweet.author.first_name }}</h5>
+                                <h5 class="card-title text-muted">{{ tweet.replying_tweet.author.username }}</h5>
+                                <a href="{{ tweet.replying_tweet.get_absolute_url }}"
+                                   class="card-text">{{ tweet.replying_tweet.body }}</a>
+                                <p class="card-text"><small class="text-muted">{{ tweet.replying_tweet.date }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="tweet">
+            <div class="card mb-6">
+                <div class="card-header">
+                    <div class="row g-0 tweet_title">
+                        <div class="col-md-1">
+                            <img class="col-md-12" src="{% static 'img/avatar.jpg' %}">
+                        </div>
+                        <h5 class="card-title col-md-2">{{ tweet.author.first_name }}</h5>
+                        <h5 class="card-title col-md-6 text-muted">{{ tweet.author.username }}</h5>
+                        <p class="card-text col-md-3"><small class="text-muted">{{ tweet.date }}</small></p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ tweet.body }}</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <textarea placeholder="Tweet your reply" class="form-control" name="tweet_comment"></textarea>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            {% for com in comments %}
+                <div class="card mb-8 comment_card">
+                    <div class="row g-0">
+                        <div class="col-md-1">
+                            <img class="col-md-12" src="{% static 'img/avatar.jpg' %}">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="card-title col-md-2">{{ com.author.first_name }}</h5>
+                                    <h5 class="card-title col-md-2 text-muted">{{ com.author.username }}</h5>
+                                </div>
+                                <a href="{{ com.get_absolute_url }}" class="card-text">{{ com.body }}</a>
+                                <p class="card-text"><small class="text-muted">{{ com.date }}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

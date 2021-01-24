@@ -1,4 +1,4 @@
-{% extends "twitter/auth.html" %}
+{% extends "twitter/auth_base.html" %}
 
 {% block title %}Registration{% endblock %}
 
@@ -7,5 +7,7 @@
 {% block auth_form %}
     {{ form }}
 
-    <div class="submit_btn"><button type="submit" class="btn btn-outline-primary">Registration</button></div>
+    <div class="submit_btn">
+        <button type="submit" class="btn btn-outline-primary">Registration</button>
+    </div>
 {% endblock %}

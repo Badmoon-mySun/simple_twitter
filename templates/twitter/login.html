@@ -1,4 +1,4 @@
-{% extends "twitter/auth.html" %}
+{% extends "twitter/auth_base.html" %}
 
 {% block title %}Login{% endblock %}
 
@@ -8,11 +8,13 @@
     {% if messages %}
         <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+                <li>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
     {{ form }}
 
-    <div class="submit_btn"><button type="submit" class="btn btn-outline-primary">Login</button></div>
+    <div class="submit_btn">
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+    </div>
 {% endblock %}

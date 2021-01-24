@@ -1,0 +1,44 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+}
+
+.tweets_container {
+    padding: 50px 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.replying {
+    background: #f2ffff;
+    width: 100%;
+}
+
+.replying_card {
+    margin: 0 0 20px 10%;
+    width: 90%;
+}
+
+.tweet {
+    width: 100%;
+}
+
+.tweet_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tweet_author_img {
+    width: 80%;
+}
+
+.comments {
+    width: 100%;
+}
